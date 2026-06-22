@@ -12,7 +12,9 @@ const STAGES: JobStage[] = [
   "Got a call",
   "Remind recruiter",
   "Interviewed",
+  "Interview going on",
   "Waiting for offer",
+  "Rejected",
   "Offered",
 ];
 
@@ -103,7 +105,8 @@ export function JobTrackerApp() {
   const metrics = useMemo(() => {
     const total = jobs.length;
     const offers = jobs.filter((job) => job.stage === "Offered").length;
-    const active = total - offers;
+    const rejected = jobs.filter((job) => job.stage === "Rejected").length;
+    const active = total - offers - rejected;
     const salaries = jobs.map((job) => job.salaryOffered).filter((salary) => salary > 0);
     const averageSalary = salaries.length ? salaries.reduce((sum, salary) => sum + salary, 0) / salaries.length : 0;
 
@@ -256,7 +259,9 @@ export function JobTrackerApp() {
       "Got a call": ["#e6fcf5", "#087f5b"],
       "Remind recruiter": ["#fff4e6", "#9a5b13"],
       Interviewed: ["#f3f0ff", "#5f3dc4"],
+      "Interview going on": ["#e0f2fe", "#0369a1"],
       "Waiting for offer": ["#fff9db", "#8d6b00"],
+      Rejected: ["#ffe5e1", "#c2413d"],
       Offered: ["#d3f9d8", "#2b8a3e"],
     };
 

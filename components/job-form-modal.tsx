@@ -8,7 +8,9 @@ const STAGES: JobStage[] = [
   "Got a call",
   "Remind recruiter",
   "Interviewed",
+  "Interview going on",
   "Waiting for offer",
+  "Rejected",
   "Offered",
 ];
 

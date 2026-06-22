@@ -3,7 +3,9 @@ export type JobStage =
   | "Got a call"
   | "Remind recruiter"
   | "Interviewed"
+  | "Interview going on"
   | "Waiting for offer"
+  | "Rejected"
   | "Offered";
 
 export interface JobEntry {
